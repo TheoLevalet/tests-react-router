@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useSessionContext } from "./contexts/SessionContext";
+import Navigation from "./navigation/Navigation";
 
 function App() {
+  const { toggleAuthentication, toggleCharte, authenticationFlag, charteFlag } =
+    useSessionContext();
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={toggleCharte}>
+        Charte Flag ({charteFlag ? "on" : "off"})
+      </button>
+      <button onClick={toggleAuthentication}>
+        Authentication Flag ({authenticationFlag ? "on" : "off"})
+      </button>
+      <Navigation />
     </div>
   );
 }
